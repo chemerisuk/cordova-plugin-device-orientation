@@ -205,7 +205,8 @@
 
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager*)manager
 {
-    return YES;
+    CLLocationDirection accuracy = [[manager heading] headingAccuracy];
+    return accuracy <= 0.0f || accuracy > 10.0f;
 }
 
 - (void)locationManager:(CLLocationManager*)manager
